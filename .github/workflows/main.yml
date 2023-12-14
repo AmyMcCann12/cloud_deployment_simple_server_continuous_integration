@@ -1,5 +1,5 @@
 # The name of the workflow
-name: Build and Test
+name: Test and Deploy
 
 # This workflow will run on any push to the repository
 on: push
@@ -26,13 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install pipenv
           pipenv install --dev
-      
+
       # Now we run our tests
       - name: Test with pytest
         run: |
           pipenv run pytest
 
-deploy:
+  deploy:
     # If we're running on the main branch (not a PR)
     if: github.ref == 'refs/heads/main'
 

@@ -7,6 +7,7 @@ name = "pypi"
 pytest = "*"
 flask = "*"
 pytest-playwright = "*"
+pytest-xprocess = "*"
 
 [dev-packages]
 

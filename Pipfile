@@ -8,6 +8,7 @@ pytest = "*"
 flask = "*"
 pytest-playwright = "*"
 pytest-xprocess = "*"
+playwright = "*"
 
 [dev-packages]
 

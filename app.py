@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def get_home():
-    return "Hello, world!"
+    return "Hello, world! Today is a good day!"
 
 if __name__ == '__main__':
     app.run(

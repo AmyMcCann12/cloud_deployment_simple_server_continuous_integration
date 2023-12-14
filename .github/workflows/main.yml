@@ -31,3 +31,33 @@ jobs:
       - name: Test with pytest
         run: |
           pipenv run pytest
+
+deploy:
+    # If we're running on the main branch (not a PR)
+    if: github.ref == 'refs/heads/main'
+
+    # And the tests have run
+    needs: test
+
+    # And no other deploy jobs are running
+    concurrency: production
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      # For exoframe we need NodeJS
+      - name: Set up Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      # We install exoframe
+      - name: Install exoframe
+        run: npm install -g exoframe
+
+      # And deploy using our secret token
+      - name: Deploy to production
+        run: |
+          exoframe deploy --token ${{ secrets.EXOFRAME_TOKEN }} --endpoint "https://exoframe.xf.mkrs.link" --update

@@ -10,5 +10,6 @@ def get_home():
 if __name__ == '__main__':
     app.run(
       debug=True,
-      host="0.0.0.0" # Listen for connections _to_ any server
+      host="0.0.0.0",
+      port=int(os.environ.get('PORT', 5001)) # Listen for connections _to_ any server
     )

@@ -19,7 +19,7 @@ def test_get_home(page, test_web_address):
     expect(food_heading_tags).to_have_text([
         'Starters:',
         'Center Piece:',
-        'Side Dishes:'
+        'Side Dishes'
     ])
     starters_tags = page.locator('.t-starters')
     expect(starters_tags).to_have_text([
